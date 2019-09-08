@@ -1,0 +1,69 @@
+==================================================================
+https://keybase.io/mark_larah
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://mark.larah.me
+  * I am mark_larah (https://keybase.io/mark_larah) on keybase.
+  * I have a public key with fingerprint D02E 6A72 0CD8 8AC4 65CF  14AB 1640 AC3E 8DCF 8CE7
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "010113259e2bf8b914d63f71705807dc8bb6dea9d2a1a6b8253c7c8509b55ca1cac50a",
+      "fingerprint": "d02e6a720cd88ac465cf14ab1640ac3e8dcf8ce7",
+      "host": "keybase.io",
+      "key_id": "1640ac3e8dcf8ce7",
+      "kid": "010113259e2bf8b914d63f71705807dc8bb6dea9d2a1a6b8253c7c8509b55ca1cac50a",
+      "uid": "20f0463bdb7801bc06f4f48620d70119",
+      "username": "mark_larah"
+    },
+    "service": {
+      "hostname": "mark.larah.me",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1567916740,
+  "expire_in": 157680000,
+  "prev": "2349e40c207a20de21102ade0ccac64e4c92223210ed7f57b40c3ef1774d546e",
+  "seqno": 12,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.3
+Comment: https://keybase.io/crypto
+
+yMInAnicrZJbbA1BGMdPWyVtqkSURKRYlRRHMzN7Py4PKCEirQeXpLJmZ2Z7tj3O
+nu7uKVUVbYpE8YKHEre6J24JEgRBedJIGwmpxGnRRtxC4hacitmGxINH8zL5vvl9
+/+//Tb67w7NCuRloXMWq2aTtdMb92/uTodV+0916wXRonRCpF6rZ4MVilHm+UW1T
+ISIACCAUkawzZFqaqUOJKqKlQhXIGlAp0UxToQzrFGGIFVNDskhUoslAN2WZYEgw
+kQEWwoJlxyuZm3DtuM9lKUBMwSoChGoaJpIiEwtK2ISKBDARmUaJpRGm8sKo4wUV
+3JyJPVZiOzzHA2PQ3j/4/+w7OSiHgAUkRTSpqWoAmgQolmRJmoIAVXkjPQA95sbx
+WsbptditNmLYxVGhISzwfK1NWPC1wSx/MSWDTAmPw0LCdXyHODH+FPX9hBcJSv26
+RMCuY6bxW8Uw7TjlX8krapnr2U5ciEBOEt8OZKGsqDpUVAmEBbY+YbvMsANCVhUN
+8BP0YbXBQKKkMwkQBFTMh2AIQoAwZYDwyRWJSURHCIkIAkZVS1ZNzorMgqoqUVlS
+Asceq4k7XBtxn7iSa3p2ZRz7SZcJDXduVQwJZeSGhmZnBjsWys0Z+WfzRnvDfk5L
+d7z5sDydulhTmBl7zZ6il+mBrcmyHU/eie9PnD7YfnFB1ofeK8enzOw17h+7MDla
+cCrP31w6q4Ec2pHftmz2nAl99vbU7rNVzrtrBT3jHzdPLvjR+a3zbavTPzCx8Myk
+h0vOpm5Ovbeme+OXoUejscUr226++NzdOHZjTV1LkVH6trQjdn1dc8+25fKe6XPb
+8583XyqvT0sbcrrIjb2NP8ecoV3i+cz8S/15jRmjTkzQry6d/6q9eKDvSMe+VP2B
+vqZnnx5sOmks7u3YVx1uXdlkR1Z8fYTL77FzW94frto1Izzicnb6WHHD9y0tr2LJ
+eSNCZaMWOonCGJA/VuQuEncWRfJ+AW/lRj8=
+=fgkq
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/mark_larah
+
+==================================================================
+
