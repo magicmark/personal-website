@@ -28,7 +28,8 @@ const Mark = () => (
                 <Link href="https://www.yelp.com">Yelp</Link>{' '}
                 <span role="img" aria-label="usa">
                     🇺🇸
-                </span>.
+                </span>
+                .
             </p>
 
             <h2>More Info</h2>
@@ -53,9 +54,26 @@ const Mark = () => (
                     <Link href="https://composerize.com/">Composerize</Link>
                 </li>
                 <li>
-                    <Link href="https://github.com/sharkcore/tweenz">
-                        Tweenz
-                    </Link>
+                    <Link href="https://github.com/sharkcore/tweenz">Tweenz</Link>
+                </li>
+                <li>
+                    <Link href="https://github.com/magicmark/pre-commit-vscode">pre-commit-vscode</Link>
+                </li>
+                <li>
+                    <Link href="https://github.com/magicmark/cf-merge">cf-merge</Link>
+                </li>
+            </ul>
+
+            <h2>Recipes</h2>
+            <ul>
+                <li>
+                    <Link href="https://github.com/magicmark/recipes/blob/master/recipes/bagels.md">Bagels</Link>
+                </li>
+                <li>
+                    <Link href="https://github.com/magicmark/recipes/blob/master/recipes/cheesebread.md">Cheesebread</Link>
+                </li>
+                <li>
+                    <Link href="https://github.com/magicmark/recipes/blob/master/recipes/tuna_pasta_bake.md">Tuna Pasta Bake</Link>
                 </li>
             </ul>
             <Auth />

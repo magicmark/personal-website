@@ -1,7 +1,8 @@
 // @flow
 
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import useScript from './useScript';
 
 const TopRight = styled.div`
     position: absolute;
@@ -9,77 +10,53 @@ const TopRight = styled.div`
     right: 12px;
 `;
 
-type Props = {||};
-type State = {|
-    isLoading: boolean,
-    isLoggedIn: boolean,
-|};
+function Auth() {
+    const [logInData, setLogInData] = useState({ isLoggedIn: false, name: null });
+    const [loaded] = useScript('https://apis.google.com/js/platform.js');
 
-class Auth extends React.Component<Props, State> {
-    state = {
-        isLoading: true,
-        isLoggedIn: false,
-    };
-
-    componentDidMount() {
-        const script = document.createElement('script');
-        script.src = 'https://apis.google.com/js/platform.js';
-        script.async = true;
-        script.defer = true;
-        script.onload = this.gapiLoaded;
-        document.body.appendChild(script);
+    if (!loaded) {
+        return <p>...</p>;
     }
 
-    onSignIn = googleUser => {
+    const onSignIn = googleUser => {
         const profile = googleUser.getBasicProfile();
-        this.setState({ name: profile.getGivenName() });
-        this.setState({ isLoggedIn: true });
-    };
-
-    signOut = () => {
-        window.gapi.auth2
-            .getAuthInstance()
-            .signOut()
-            .then(() => {
-                this.setState({ isLoggedIn: false });
-            });
-    };
-
-    gapiLoaded = () => {
-        this.setState({ isLoading: false }, () => {
-            window.gapi.signin2.render('googleLogin', {
-                scope: 'profile email',
-                longtitle: false,
-                onsuccess: this.onSignIn,
-                onfailure: e => {
-                    console.log(e);
-                },
-            });
+        setLogInData({
+            isLoggedIn: true,
+            name: profile.getGivenName(),
         });
     };
 
-    render() {
-        const { isLoading, isLoggedIn, name } = this.state;
-        const shouldShowLoginButton = !isLoading && !isLoggedIn;
+    window.gapi.signin2.render('googleLogin', {
+        scope: 'profile email',
+        longtitle: false,
+        onsuccess: onSignIn,
+        onfailure: e => {
+            console.log(e);
+        },
+    });
 
-        const getWelcomeText = () => (
-            <p>
-                Welcome, {name}! <button onClick={this.signOut}>Logout</button>
-            </p>
-        );
+    const signOut = async () => {
+        await window.gapi.auth2.getAuthInstance().signOut();
+        setLogInData({ isLoggedIn: false, name: null });
+    };
 
-        return (
-            <TopRight>
-                <div
-                    id="googleLogin"
-                    style={{
-                        display: shouldShowLoginButton ? 'block' : 'none',
-                    }}
-                />
-                {isLoggedIn && getWelcomeText()}
-            </TopRight>
-        );
-    }
+    const { isLoggedIn, name } = logInData;
+
+    return (
+        <TopRight>
+            <div
+                id="googleLogin"
+                style={{
+                    display: isLoggedIn ? 'none' : 'block',
+                }}
+            />
+            {isLoggedIn && (
+                <p>
+                    Welcome, {name}! <button onClick={signOut}>Logout</button>
+                </p>
+            )}
+        </TopRight>
+    );
 }
 
 export default Auth;
