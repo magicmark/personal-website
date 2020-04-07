@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "start": "webpack --watch --mode development",
+    "build": "webpack --mode production"
+  },
+  "devDependencies": {
+    "@neutrinojs/node": "^9.1.0",
+    "neutrino": "^9.1.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}

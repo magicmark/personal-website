@@ -9,13 +9,11 @@
     "styled-components": "^5.0.1"
   },
   "scripts": {
-    "start:client": "react-scripts start",
-    "start:server": "webpack --config webpack.server.config.js --watch --mode development",
+    "start": "react-scripts start",
     "build:client": "react-scripts build",
-    "build:server": "webpack --config webpack.server.config.js --mode production",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build": "yarn build:client && yarn build:server"
+    "build": "yarn build:client && cd functions && yarn && yarn build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,10 +30,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@neutrinojs/node": "^9.1.0",
-    "neutrino": "^9.1.0",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
-  }
+  "devDependencies": {}
 }
