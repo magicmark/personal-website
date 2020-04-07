@@ -9,10 +9,13 @@
     "styled-components": "^5.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start:client": "react-scripts start",
+    "start:server": "webpack --config webpack.server.config.js --watch --mode development",
+    "build:client": "react-scripts build",
+    "build:server": "webpack --config webpack.server.config.js --mode production",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build": "yarn build:client && yarn build:server"
   },
   "eslintConfig": {
     "extends": "react-app"
