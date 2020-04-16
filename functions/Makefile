@@ -6,5 +6,5 @@ node_modules: yarn.lock
 .env:
 	echo "ENGINE_API_KEY=${ENGINE_API_KEY}" > .env
 
-build: node_modules
+build: .env node_modules
 	yarn build
