@@ -4,8 +4,7 @@ provider:
   runtime: nodejs12.x
 functions:
   graphql:
-    # this is formatted as <FILENAME>.<HANDLER>
-    handler: build/hub.graphqlHandler
+    handler: build/hub.handler
     events:
     - http:
         path: graphql

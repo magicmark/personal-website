@@ -10,4 +10,4 @@ function getHandler() {
     });
 }
 
-export const graphqlHandler = getHandler();
+export const handler = getHandler();
