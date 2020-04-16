@@ -1,12 +1,23 @@
 {
   "scripts": {
+    "serve-function": "nodemon --exec 'serverless offline --printOutput' --watch 'build/*.js'",
     "start": "webpack --watch --mode development",
     "build": "webpack --mode production"
   },
   "devDependencies": {
     "@neutrinojs/node": "^9.1.0",
+    "apollo": "^2.27.0",
     "neutrino": "^9.1.0",
+    "nodemon": "^2.0.3",
+    "serverless": "^1.67.3",
+    "serverless-offline": "^6.1.4",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "apollo-datasource-rest": "^0.8.1",
+    "apollo-server-lambda": "^2.12.0",
+    "serverless-dotenv-plugin": "^2.3.2",
+    "servless": "^1.0.0"
   }
 }

@@ -10,10 +10,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build:client": "react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "build": "yarn build:client && cd functions && yarn && yarn build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
