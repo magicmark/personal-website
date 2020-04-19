@@ -1,5 +1,7 @@
 import { ApolloServer, gql } from 'apollo-server-lambda';
 import { RESTDataSource } from 'apollo-datasource-rest';
+import { makeExecutableSchema } from 'graphql-tools';
+import * as Recipe from './recipe';
 
 const APOLLO_API_KEY = process.env.ENGINE_API_KEY;
 
@@ -78,14 +80,25 @@ class KeybaseAPI extends RESTDataSource {
     }
 }
 
+class S3API extends RESTDataSource {
+    constructor() {
+        super();
+        this.baseURL = 'http://markl42.s3-us-west-1.amazonaws.com/';
+    }
+
+    async getRecipesJson(id) {
+        return this.get('recipes.json');
+    }
+}
+
 const resolvers = {
     Query: {
         contactInfo() {
             return ContactInformation;
         },
         pgp: async (_, __, { dataSources }) => {
-            const { keybaseAPI } = dataSources;
-            const publicKey = await keybaseAPI.getPgpKeys();
+            const { keybase } = dataSources;
+            const publicKey = await keybase.getPgpKeys();
 
             return {
                 fingerprint: 'D02E6A720CD88AC465CF14AB1640AC3E8DCF8CE7',
@@ -99,18 +112,28 @@ const resolvers = {
             return Object.values(Profiles);
         },
     },
-};
+ };
+
+// const { schema } = new GraphQLModule({
+//     /*...*/
+//   });
 
 function createServer() {
     // Check if we're running locally, outside of an actual Netfify/Lambda deploy
     // @see https://docs.netlify.com/configure-builds/environment-variables/#build-metadata
     const isLocalDev = process.env.NETLIFY !== 'true';
 
+    const schema = makeExecutableSchema({
+        typeDefs: [ typeDefs, Recipe.typeDefs ],
+        resolvers: [resolvers, Recipe.resolvers],
+      });
+
     return new ApolloServer({
-        typeDefs,
+        schema,
         dataSources: () => {
             return {
-                keybaseAPI: new KeybaseAPI(),
+                keybase: new KeybaseAPI(),
+                s3: new S3API(),
             };
         },
         engine: {
