@@ -8,3 +8,6 @@ node_modules: yarn.lock
 
 build: .env node_modules
 	yarn build
+
+publish-schema: .env build
+	yarn publish-schema

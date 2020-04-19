@@ -1,28 +1,19 @@
-// import React from 'react';
+import * as React from 'react';
+import { GraphQLClient, ClientContext } from 'graphql-hooks';
 import Mark from './Mark';
-// import './App.css';
 
-/*
+const GQL_URL = process.env.NODE_ENV === 'production' ? '/.netlify/functions/hub' : '/dev/graphql';
+
+const client = new GraphQLClient({
+    url: GQL_URL,
+});
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <ClientContext.Provider value={client}>
+            <Mark />
+        </ClientContext.Provider>
+    );
 }
-*/
 
-export default Mark;
+export default App;

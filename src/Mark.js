@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Auth from './Auth';
+import Recipes from './Recipes';
 import Link from './Link';
 import CookieNotice from './CookieNotice';
 
@@ -64,18 +65,7 @@ const Mark = () => (
                 </li>
             </ul>
 
-            <h2>Recipes</h2>
-            <ul>
-                <li>
-                    <Link href="https://github.com/magicmark/recipes/blob/master/recipes/bagels.md">Bagels</Link>
-                </li>
-                <li>
-                    <Link href="https://github.com/magicmark/recipes/blob/master/recipes/cheesebread.md">Cheesebread</Link>
-                </li>
-                <li>
-                    <Link href="https://github.com/magicmark/recipes/blob/master/recipes/tuna_pasta_bake.md">Tuna Pasta Bake</Link>
-                </li>
-            </ul>
+            <Recipes />
             <Auth />
         </Container>
         <CookieNotice />

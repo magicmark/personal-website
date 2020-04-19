@@ -1,0 +1,22 @@
+name: Upload schema to apollo registry
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Upload schema to apollo registry
+    # This job runs on Linux
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: Upload schema
+        shell: bash
+        run: make -C functions publish-schema
+        env:
+          ENGINE_API_KEY: ${{ secrets.ENGINE_API_KEY }}
