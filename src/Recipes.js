@@ -1,7 +1,9 @@
 import * as React from 'react';
+// eslint-disable-next-line no-unused-vars
+import styled from 'styled-components/macro';
 import { useQuery } from 'graphql-hooks';
 import { useDebounce } from 'use-debounce';
-
+import spinner from './spinner.svg';
 import Link from './Link';
 
 const GET_RECIPES_QUERY = /* GraphQL */ `
@@ -14,24 +16,45 @@ const GET_RECIPES_QUERY = /* GraphQL */ `
     }
 `;
 
-const RecipeSearchResults = ({ searchQuery }) => {
+const SkullEmoji = () => (
+    <span role="img" aria-label="error">
+        💀
+    </span>
+);
+
+const RecipeSearch = ({ searchBox, searchQuery, isDebouncing }) => {
     const { loading, error, data } = useQuery(GET_RECIPES_QUERY, {
         variables: {
             query: searchQuery,
         },
     });
 
-    if (loading) return <ul></ul>;
-    if (error) return 'Error fetching recipes :(';
+    if (loading) return searchBox(true);
+
+    if (error)
+        return (
+            <>
+                {searchBox(false)}
+                <div>
+                    <b>
+                        <SkullEmoji /> Error fetching data :(
+                    </b>
+                    <pre>{JSON.stringify(error, null, 4)}</pre>
+                </div>
+            </>
+        );
 
     return (
-        <ul>
-            {data.recipeSearch.map((recipe) => (
-                <li key={recipe.id}>
-                    <Link href={recipe.link}>{recipe.name}</Link>
-                </li>
-            ))}
-        </ul>
+        <>
+            {searchBox(isDebouncing)}
+            <ul>
+                {data.recipeSearch.map((recipe) => (
+                    <li key={recipe.id}>
+                        <Link href={recipe.link}>{recipe.name}</Link>
+                    </li>
+                ))}
+            </ul>
+        </>
     );
 };
 
@@ -45,8 +68,50 @@ const Recipes = () => {
     return (
         <>
             <h2>Recipes</h2>
-            Search: <input type="text" onChange={handleChange} value={recipeSearch} />
-            <RecipeSearchResults searchQuery={debouncedRecipeSearch} />
+            <RecipeSearch
+                searchBox={(showSpinner) => (
+                    <div
+                        css={`
+                            height: 28px;
+                            display: grid;
+                            grid-template-columns: min-content 100px auto;
+                            grid-gap: 6px;
+                        `}
+                    >
+                        <div
+                            css={`
+                                align-self: center;
+                            `}
+                        >
+                            Search:
+                        </div>
+                        <div
+                            css={`
+                                align-self: center;
+                            `}
+                        >
+                            <input
+                                css={`
+                                    width: 100%;
+                                `}
+                                type="text"
+                                onChange={handleChange}
+                                value={recipeSearch}
+                            />
+                        </div>
+                        <div
+                            css={`
+                                padding-top: 4px;
+                                padding-left: 2px;
+                            `}
+                        >
+                            {showSpinner && <img src={spinner} alt="loader" height="20px" />}
+                        </div>
+                    </div>
+                )}
+                searchQuery={debouncedRecipeSearch}
+                isDebouncing={recipeSearch !== debouncedRecipeSearch}
+            />
         </>
     );
 };

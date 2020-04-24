@@ -1,5 +1,6 @@
 import gql from 'graphql-tag';
-import FlexSearch from 'flexsearch';
+import lunr from 'lunr';
+
 // import GoopError from './goopError';
 
 export const typeDefs = gql`
@@ -124,13 +125,25 @@ export const resolvers = {
             return Recipe.fromId(id);
         },
         recipeSearch: async (_, { query }, { dataSources }) => {
+            if (query.length < 2) {
+                throw new Error('query must be at least 3 chars');
+            }
+
             const recipes = await dataSources.s3.getRecipesJson();
-            const index = new FlexSearch('speed');
-            recipes.forEach((recipe) => {
-                index.add(recipe.id, JSON.stringify(recipe));
+
+            const index = lunr(function () {
+                this.field('source');
+                this.field('tags');
+                this.field('name');
+                this.field('id');
+
+                recipes.forEach((recipe) => {
+                    this.add(recipe);
+                });
             });
-            const result = await index.search(query);
-            return result.map((id) => Recipe.fromId(id));
+
+            const result = index.search(query);
+            return result.map(({ ref }) => Recipe.fromId(ref));
         },
     },
 };
