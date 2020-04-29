@@ -34,5 +34,8 @@
     ]
   },
   "devDependencies": {},
-  "proxy": "http://localhost:3000"
+  "proxy": "http://localhost:3000",
+  "resolutions": {
+    "*/@sindresorhus/fnv1a": "1.2.0"
+  }
 }
