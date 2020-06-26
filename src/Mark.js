@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import Auth from './Auth';
+// import Auth from './Auth';
 import Recipes from './Recipes';
 import Link from './Link';
 import CookieNotice from './CookieNotice';
