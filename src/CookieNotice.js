@@ -5,8 +5,6 @@ import styled from 'styled-components';
 import Link from './Link';
 
 const Container = styled.div`
-    position: absolute;
-    bottom: 0px;
     left: 12px;
     right: 12px;
 

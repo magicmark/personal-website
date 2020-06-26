@@ -7,10 +7,25 @@ import CookieNotice from './CookieNotice';
 
 const Container = styled.div`
     transform: skew(1.35deg);
+    flex-grow: 1;
+`;
+
+const WebringContainer = styled.div`
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+const Main = styled.div`
+    min-height: 100vh;
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
 `;
 
 const Mark = () => (
-    <div>
+    <Main>
         <Container>
             <header>
                 <h1>Mark Larah</h1>
@@ -66,10 +81,13 @@ const Mark = () => (
             </ul>
 
             <Recipes />
-            <Auth />
+            {/* <Auth /> */}
         </Container>
+        <WebringContainer>
+            <sharkcore-webring />
+        </WebringContainer>
         <CookieNotice />
-    </div>
+    </Main>
 );
 
 export default Mark;
