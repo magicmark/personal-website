@@ -47,6 +47,8 @@ const Mark = () => (
                 </span>
                 .
             </p>
+    
+            <p>If you like reading about JavaScript, GraphQL or software engineering in general, you may enjoy <Link href="https://blog.larah.me/">my blog!</Link></p>
 
             <h2>More Info</h2>
             <ul>
@@ -70,13 +72,19 @@ const Mark = () => (
                     <Link href="https://composerize.com/">Composerize</Link>
                 </li>
                 <li>
-                    <Link href="https://github.com/sharkcore/tweenz">Tweenz</Link>
+                    <Link href="https://techwriting.styles.wiki/">techwriting.styles.wiki</Link>
+                </li>
+                <li>
+                    <Link href="https://github.com/Yelp/dataloader-codegen">dataloader-codegen</Link>
                 </li>
                 <li>
                     <Link href="https://github.com/magicmark/pre-commit-vscode">pre-commit-vscode</Link>
                 </li>
                 <li>
-                    <Link href="https://github.com/magicmark/cf-merge">cf-merge</Link>
+                    <Link href="https://apollo-visualizer.vercel.app/">Apollo Error Handling Visualizer</Link>
+                </li>
+                <li>
+                    <Link href="https://github.com/sharkcore/tweenz">Tweenz</Link>
                 </li>
             </ul>
 
