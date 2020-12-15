@@ -75,6 +75,9 @@ const Mark = () => (
                     <Link href="https://techwriting.styles.wiki/">techwriting.styles.wiki</Link>
                 </li>
                 <li>
+                    <Link href="https://github.com/magicmark/jest-how-do-i-mock-x">Jest: How do I mock x?</Link>
+                </li>
+                <li>
                     <Link href="https://github.com/Yelp/dataloader-codegen">dataloader-codegen</Link>
                 </li>
                 <li>
