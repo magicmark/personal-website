@@ -1,8 +1,6 @@
 import gql from 'graphql-tag';
 import lunr from 'lunr';
 
-// import GoopError from './goopError';
-
 export const typeDefs = gql`
     extend type Query {
         recipe(id: String!): Recipe!
@@ -18,56 +16,6 @@ export const typeDefs = gql`
         link: String
     }
 `;
-
-// class Goop {
-//     constructor() {
-//         const { name, schema } = this.constructor;
-
-//         if (!schema) {
-//             throw new GoopError(
-//                 [
-//                     `[goop :: ${name}]`,
-//                     `It looks like you tried to construct the GraphQL type class`,
-//                     `for \`${name}\` without defining the \`schema\` attribute.`,
-//                     `You need to attach the schema(s) for this class under \`${name}.schema\`.`,
-//                 ].join(' '),
-//             );
-//         }
-
-//         const isSchemaValid =
-//             schema instanceof Object && schema.kind === 'Document' && Array.isArray(schema.definitions);
-
-//         if (!isSchemaValid) {
-//             throw new GoopError(
-//                 [
-//                     `[goop :: ${name}]`,
-//                     `\`${name}.schema\` doesn't look like a valid.`,
-//                     `This should be a GraphQL Schema string wrapped by graphql-tag.`,
-//                 ].join(' '),
-//             );
-//         }
-
-//         // Find the type def for this type
-//         const typeDef = typeDefs.definitions.find((def) => def.name.value === name);
-//         if (!typeDef) {
-//             throw new GoopError(
-//                 [
-//                     `[goop :: ${name}] I couldn't find a type definition for \`${name}\` in \`${name}.schema\`.`,
-//                     `(Maybe you have JavaScript minification enabled? Try explicitly setting \`${name}.name\`)`,
-//                 ].join(' '),
-//             );
-//         }
-
-//         const { fields } = typeDef;
-//         const fieldNames = fields.map(f => f.name.value);
-
-//         // const classFields = Object.keys(this)
-//        // console.log('classFields', Object.getOwnPropertyDescriptors(this.constructor))
-//        this.fromFields = (args) => {
-//            console.log('args', args)
-//        }
-//     }
-// }
 
 async function getRecipe(id, s3) {
     const recipes = await s3.getRecipesJson();
@@ -147,67 +95,3 @@ export const resolvers = {
         },
     },
 };
-
-// //export const fromId = Recipe.fromId;
-
-// //             id: String!
-// //             source: String
-// //             serves: Int
-// //             tags: [String!]
-// //             name: String!
-// //             link: String
-
-// //     const recipes = s3.getRecipesJson();
-// //     const ids = recipes.map(r => r.id);
-// //     return ids;
-// // },
-// // recipes: async ({ id }) => {
-// //     return id;
-// // },
-
-// // }
-
-// //function fromId
-
-// // const resolverMap = {
-// //     Query: {
-// //         recipe: async (obj, { id }, { dataSources }) => {
-// //             const { s3 } = dataSources;
-// //             const recipes = s3.getRecipesJson();
-// //             const ids = recipes.map(r => r.id);
-// //             return ids;
-// //         },
-// //         recipes: async ({ id }) => {
-// //             return id;
-// //         },
-
-// //       recipe: (_, { id }) => {
-// //         return {
-// //           _id: id,
-// //           username: 'jhon'
-// //         };
-// //       }
-// //     },
-// //     User: {
-// //       id: user => user._id,
-// //       username: user => user.username
-// //     }
-// //   };
-
-// // export const MyFirstModule = new GraphQLModule({
-// //     typeDefs: gql`
-// //         type Query {
-// //             recipe(id: String!): Recipe!
-// //             recipes: [Recipe!]!
-// //         }
-
-// //         type Recipe {
-// //             id: String!
-// //             source: String
-// //             serves: Int
-// //             tags: [String!]
-// //             name: String!
-// //             link: String
-// //         }
-// //     `,
-// // });

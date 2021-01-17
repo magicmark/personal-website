@@ -1,20 +1,13 @@
 import * as React from 'react';
-import styled from 'styled-components';
-// import Auth from './Auth';
-import Recipes from './Recipes';
-import Link from './Link';
+
 import CookieNotice from './CookieNotice';
+import Link from './Link';
+import Recipes from './Recipes';
+import styled from 'styled-components';
 
 const Container = styled.div`
     transform: skew(1.35deg);
     flex-grow: 1;
-`;
-
-const WebringContainer = styled.div`
-    padding: 12px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 `;
 
 const Main = styled.div`
@@ -94,9 +87,6 @@ const Mark = () => (
             <Recipes />
             {/* <Auth /> */}
         </Container>
-        <WebringContainer>
-            <sharkcore-webring />
-        </WebringContainer>
         <CookieNotice />
     </Main>
 );

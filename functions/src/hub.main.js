@@ -1,4 +1,7 @@
-import createServer from './app';
+import createServer, { typeDefs } from './app';
+
+// Export as a convenience 
+export { typeDefs };
 
 function getHandler() {
     const server = createServer();

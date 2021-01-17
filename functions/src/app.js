@@ -1,7 +1,10 @@
-import { ApolloServer, gql } from 'apollo-server-lambda';
-import { RESTDataSource } from 'apollo-datasource-rest';
-import { makeExecutableSchema } from 'graphql-tools';
 import * as Recipe from './recipe';
+
+import { ApolloServer, gql } from 'apollo-server-lambda';
+
+import { RESTDataSource } from 'apollo-datasource-rest';
+import { makeExecutableSchema } from '@graphql-tools/schema';
+import { mergeTypeDefs } from '@graphql-tools/merge';
 
 const APOLLO_API_KEY = process.env.ENGINE_API_KEY;
 
@@ -34,7 +37,7 @@ const ContactInformation = {
     website: 'https://mark.larah.me',
 };
 
-const typeDefs = gql`
+const socialTypeDefs = gql`
     enum WebPresence {
         TWITTER
         GITHUB
@@ -112,21 +115,18 @@ const resolvers = {
             return Object.values(Profiles);
         },
     },
- };
+};
 
-// const { schema } = new GraphQLModule({
-//     /*...*/
-//   });
+export const typeDefs = mergeTypeDefs([socialTypeDefs, Recipe.typeDefs]);
+const schema = makeExecutableSchema({
+    typeDefs,
+    resolvers: [resolvers, Recipe.resolvers],
+});
 
 function createServer() {
     // Check if we're running locally, outside of an actual Netfify/Lambda deploy
     // @see https://docs.netlify.com/configure-builds/environment-variables/#build-metadata
     const isLocalDev = process.env.NETLIFY !== 'true';
-
-    const schema = makeExecutableSchema({
-        typeDefs: [ typeDefs, Recipe.typeDefs ],
-        resolvers: [resolvers, Recipe.resolvers],
-      });
 
     return new ApolloServer({
         schema,
