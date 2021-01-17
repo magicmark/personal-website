@@ -19,4 +19,4 @@ jobs:
         shell: bash
         run: cd functions && make publish-schema
         env:
-          ENGINE_API_KEY: ${{ secrets.ENGINE_API_KEY }}
+          APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
