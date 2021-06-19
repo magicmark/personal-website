@@ -86,7 +86,7 @@ class KeybaseAPI extends RESTDataSource {
 class S3API extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http://markl42.s3-us-west-1.amazonaws.com/';
+        this.baseURL = 'https://cdn.larah.me';
     }
 
     async getRecipesJson(id) {
